@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Hatch</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" type="text/css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300" rel="stylesheet">
+  <link rel="stylesheet" href="stylesheet.css" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-indigo.min.css">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <script src="style.js"></script>
+</head>
+<body>
+ <div id="sideNav" class="sidenav">
+  <div class="navtitle">
+    Hatch
+  </div><hr>
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="index.html">Home</a>
+  <a href="task.html">View tasks</a>
+  <a href="test.html">Test analysis</a>
+</div>
+<div class="topNavBar">
+  <span class="toggle-sidenav" onclick="openNav()">
+    <i class="material-icons">menu</i>
+  </span>
+  <h3 style="color: #FFFFFF; float: left; margin-left: 60px; margin-top: 13px; font-size: 30px;">Hatch</h3>
+</div>
+<br><br><div id="overlay">
+<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="datatable">
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">Task</th>
+      <th>Due Date</th>
+    </tr>
+  </thead>
+  <tbody id="datatable" class="mdl-data-table--selectable">
+
+  </tbody>  
+</table>
+</div>
+<div id="invisDesc">
+  <form action="#" class="description">
+    <p class="taskName">Task name:</p>
+    <div class="mdl-textfield mdl-js-textfield">
+      <input type="text" name="name" id="taskName" class="mdl-textfield__input" readonly><br>
+    </div>
+    <p class="taskDesc">Description:</p>
+    <div class="mdl-textfield mdl-js-textfield">
+      <input type="text" name="description" id="taskDesc" class="mdl-textfield__input" readonly><br>
+    </div>
+    <p class="taskDifficulty">Difficulty Selected:</p>
+    <div class="mdl-textfield mdl-js-textfield">
+      <input type="number" name="difficulty" id="taskDifficulty" class="mdl-textfield__input" readonly><br>
+    </div>
+    <p class="taskImportance">Importance:</p>
+    <div class="mdl-textfield mdl-js-textfield">
+      <input type="number" name="importance" id="taskImportance" class="mdl-textfield__input" readonly><br>
+    </div>
+    <p class="taskPriority">Priority given:</p>
+    <div class="mdl-textfield mdl-js-textfield">
+      <input type="number" name="priority" value="taskPriority" class="mdl-textfield__input" readonly>
+    </div>
+    <button id="deleted" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Delete this task</button>
+    <button id="edit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Edit this task</button><br>
+    <button id="backButton" onclick="back()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Back</button>
+  </div>
+</form>
+</div>
+<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-js-ripple-effect" style="left:80%; top:80%;position: absolute;" onclick="addDataF()">
+  <i class="material-icons">add</i>
+</button>
+<div id="invisAddTask">
+  <p class="taskName">Task name:</p>
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+   <input type="text" name="name" id="taskName" class="mdl-textfield__input">
+   <label class="mdl-textfield__label">Title</label>
+ </div>
+ <p class="taskDesc">Description:</p>
+ <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+  <input type="text" name="description" id="taskDesc" class="mdl-textfield__input">
+  <label class="mdl-textfield__label">Add description</label>
+</div>
+<p class="taskDifficulty">Difficulty Selected:</p>
+<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+  <input type="number" name="difficulty" id="taskDifficulty" class="mdl-textfield__input">
+  <label class="mdl-textfield__label">Difficulty</label>
+</div>
+<p class="taskImportance">Importance:</p>
+<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+  <input type="number" name="importance" id="taskImportance" class="mdl-textfield__input">
+  <label class="mdl-textfield__label">Importance</label>
+</div>
+<button id="addButton" onclick="finish()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Add Task</button><br>
+<button id="backButton" onclick="back()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Back</button>
+</div>
+</body>
+</html>
