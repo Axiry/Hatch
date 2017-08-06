@@ -3,6 +3,12 @@ var db = openDatabase("MyData","","My Database",1024*100);
 
 
 function init(){
+    if (localStorage.hatch=="undefined"){localStorage.hatch = "0";}
+    if (localStorage.luck=="undefined"){localStorage.luck = "0";}
+    if (localStorage.normal=="undefined"){localStorage.normal = "0";}
+    if (localStorage.rare=="undefined"){localStorage.rare = "0";}
+    if (localStorage.superRare=="undefined"){localStorage.superRare = "0";}
+    if (localStorage.superiorSuperRare=="undefined"){localStorage.superiorSuperRare = "0";}
     datatable = document.getElementById("datatable");
     document.getElementById("hatchProgress").innerHTML = localStorage.hatch;
     document.getElementById("normal").innerHTML = localStorage.normal;
