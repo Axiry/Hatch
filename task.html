@@ -19,7 +19,6 @@
 </head>
 <body onload="init()">
 
-<div id="k">
  <div id="sideNav" class="sidenav">
   <div class="navtitle">
     Hatch
@@ -29,35 +28,41 @@
   <a href="task.html">View tasks</a>
   <a href="test.html">Test analysis</a>
   <img id="egg" src="egg.png" onclick="hatchPage()" />
-  <br><br><br><br><br><br><br><br><br><br><br><br>
-  <img id="setting" src="setting.png" onclick="settingPage()" style="width:50%" />
+  <img id="setting" src="setting.png" onclick="settingPage()"/>
 </div>
 <div class="topNavBar">
   <span class="toggle-sidenav" onclick="openNav()">
     <i class="material-icons">menu</i>
   </span>
-  <h3 style="color: #FFFFFF; float: left; margin-left: 60px; margin-top: 13px; font-size: 30px;">Hatch</h3>
+  <h3 class="topTitle">Hatch</h3>
 </div>
 <br><br>
-
-<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2" style="z-index: 0">
-  <input type="checkbox" id="switch-2" class="mdl-switch__input" onclick="order();" checked>
-  <span class="mdl-switch__label"></span>
-</label>
+<div class="switchDescLeft">
+  <p class="switchDescText">Time Added</p>
+</div>
+<div class="switchDescRight">
+  <p class="switchDescText">Priority View</p>
+</div>
+<div class="switch">
+  <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2" style="z-index: 0">
+    <input type="checkbox" id="switch-2" class="mdl-switch__input" onclick="order();" checked>
+    <span class="mdl-switch__label"></span>
+  </label>
+</div>
 
 <div id="overlay">
-<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-  <thead>
-    <tr>
-      <th class="mdl-data-table__cell--non-numeric">Task</th>
-      <th>Days Left</th>
-    </tr>
-  </thead>
-  <tbody id="datatable" class="mdl-data-table--selectable">
+  <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+    <thead>
+      <tr>
+        <th class="mdl-data-table__cell--non-numeric">Task</th>
+        <th>Days Left</th>
+      </tr>
+    </thead>
+    <tbody id="datatable" class="mdl-data-table--selectable">
 
-  </tbody>  
-</table>
-<p id="msg"></p>
+    </tbody>  
+  </table>
+  <p id="msg"></p>
 </div>
 
 <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-js-ripple-effect" style="left:80%; top:80%;position: absolute;" onclick="addDataF()">
@@ -66,58 +71,58 @@
 
 </div>
 
-<div id="hatch" style="top: 3%;left: 5%;z-index: 10000;background-color: white;position:absolute; width: 95%;height: 97%;display: none;">
+<div id="hatch">
   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="pageHide()">Back</button>
   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="hatchEgg()">Hatch</button>
   <br><br><img id="egg2" src="egg2.png" />
-  <p id="hatchProgress">0</p>
+  <p class="hatchValues" id="hatchProgress">0</p>
   <img src="chicken.png" />
-  <p id="normal"></p>
+  <p class="hatchValues" id="normal"></p>
   <img src="lark.png" />
-  <p id="rare"></p>
+  <p class="hatchValues" id="rare"></p>
   <img src="bushtit.png" />
-  <p id="superRare"></p>
+  <p class="hatchValues" id="superRare"></p>
   <img src="dragon.png" />
-  <p id="superiorSuperRare"></p>
-  <p id="luck"></p>
+  <p class="hatchValues" id="superiorSuperRare"></p>
+  <p class="hatchValues" id="luck"></p>
 </div>
 
 <div id="setting1" style="top: 3%;left: 5%;z-index: 10000;background-color: white;position:absolute; width: 95%;height: 97%;display: none;">
-   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="settingHide()">Back</button>
-   <p class="taskName">Set ratio of hatch-progress gained to the difficulty</p>
-   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+ <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="settingHide()">Back</button>
+ <p class="taskName">Set ratio of hatch-progress gained to the difficulty</p>
+ <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
    <input type="text" name="name" id="setRatio" class="mdl-textfield__input">
    <label class="mdl-textfield__label">Title</label>
  </div>
-   <button onclick="set()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Set</button>
+ <button onclick="set()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Set</button>
 </div>
 
 <div id="invisDesc">
-    <p class="taskName">Task name:</p>
-    <div class="mdl-textfield mdl-js-textfield">
-      <input type="text" name="name" id="Name1" class="mdl-textfield__input" readonly><br>
-    </div>
-    <p class="taskDesc">Description:</p>
-    <div class="mdl-textfield mdl-js-textfield">
-      <input type="text" name="description" id="Detail1" class="mdl-textfield__input" readonly><br>
-    </div>
-    <p class="taskDifficulty">Difficulty Selected:</p>
-    <div class="mdl-textfield mdl-js-textfield">
-      <input type="number" name="difficulty" id="Difficulty1" class="mdl-textfield__input" readonly><br>
-    </div>
-    <p class="taskImportance">Importance:</p>
-    <div class="mdl-textfield mdl-js-textfield">
-      <input type="number" name="importance" id="Importance1" class="mdl-textfield__input" readonly><br>
-    </div>
-    <p class="taskPriority">Days left from the due:</p>
-    <div class="mdl-textfield mdl-js-textfield">
-      <input type="text" name="priority" id="Due1" class="mdl-textfield__input" readonly>
-    </div>
-    <button id="deleted" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Delete this task</button>
-    <button id="edit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Edit</button><br><br>
-    <button id="finished" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">I have completed this task!</button>
-    <button id="backButton" onclick="back()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Back</button>
+  <p class="taskName">Task name:</p>
+  <div class="mdl-textfield mdl-js-textfield">
+    <input type="text" name="name" id="Name1" class="mdl-textfield__input" readonly><br>
   </div>
+  <p class="taskDesc">Description:</p>
+  <div class="mdl-textfield mdl-js-textfield">
+    <input type="text" name="description" id="Detail1" class="mdl-textfield__input" readonly><br>
+  </div>
+  <p class="taskDifficulty">Difficulty Selected:</p>
+  <div class="mdl-textfield mdl-js-textfield">
+    <input type="number" name="difficulty" id="Difficulty1" class="mdl-textfield__input" readonly><br>
+  </div>
+  <p class="taskImportance">Importance:</p>
+  <div class="mdl-textfield mdl-js-textfield">
+    <input type="number" name="importance" id="Importance1" class="mdl-textfield__input" readonly><br>
+  </div>
+  <p class="taskPriority">Days left from the due:</p>
+  <div class="mdl-textfield mdl-js-textfield">
+    <input type="text" name="priority" id="Due1" class="mdl-textfield__input" readonly>
+  </div>
+  <button id="deleted" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Delete this task</button>
+  <button id="edit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Edit</button><br><br>
+  <button id="finished" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">I have completed this task!</button>
+  <button id="backButton" onclick="back()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Back</button>
+</div>
 </div>
 
 
@@ -153,9 +158,9 @@
 
 
 <script src="database.js"></script>
-  <script type="text/javascript">
-    order();
-  </script>
+<script type="text/javascript">
+  order();
+</script>
 
 
 </html>

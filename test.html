@@ -1,6 +1,6 @@
 <html>
-  <script type="text/javascript" src="chart.js"></script>
-  <head>
+<script type="text/javascript" src="chart.js"></script>
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
   <title>Hatch</title>
@@ -18,52 +18,57 @@
   <script src="style.js"></script>
 </head>
 <body>
-<div id="sideNav" class="sidenav">
-  <div class="navtitle">
-    Hatch
-  </div><hr>
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="index.html">Home</a>
-  <a href="task.html">View tasks</a>
-  <a href="test.html">Test analysis</a>
-</div>
-<div class="topNavBar">
-  <span class="toggle-sidenav" onclick="openNav()">
-    <i class="material-icons">menu</i>
-  </span>
-  <h3 style="color: #FFFFFF; float: left; margin-left: 60px; margin-top: 13px; font-size: 30px;">Hatch</h3>
-</div>
-<br><br>
-<div id="chart_div" style="width: 100%; height: 50%"></div>
-<input id="ad" type="text"></input>
-<button onclick = "add()">Add</button>
-<button onclick = "refresh()">refresh</button>
+  <div id="sideNav" class="sidenav">
+    <div class="navtitle">
+      Hatch
+    </div><hr>
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="index.html">Home</a>
+    <a href="task.html">View tasks</a>
+    <a href="test.html">Test analysis</a>
+  </div>
+  <div class="topNavBar">
+    <span class="toggle-sidenav" onclick="openNav()">
+      <i class="material-icons">menu</i>
+    </span>
+    <h3 style="color: #FFFFFF; float: left; margin-left: 60px; margin-top: 13px; font-size: 30px;">Hatch</h3>
+  </div>
+  <br><br>
+  <div id="chart_div"></div>
+  <div id="chart_form">
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input id="ad" type="text" class="mdl-textfield__input"></input>
+    <label class="mdl-textfield__label">Test Results (in %)</label>
+    </div><br>
+  <button onclick="add()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Add</button>
+  <button onclick="refresh()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">refresh</button>
+  </div>
 </body>
 
 <script>
-google.charts.load('current', {packages: ['corechart', 'line']});
-google.charts.setOnLoadCallback(drawBasic);
-var a=new Array();
-if (localStorage.k == "undefined") {localStorage.k = "-1"}
-if (localStorage.hcl == "undefined"){localStorage.hcl = "[]"}
-a = JSON.parse(localStorage.hcl);
+  google.charts.load('current', {packages: ['corechart', 'line']});
+  google.charts.setOnLoadCallback(drawBasic);
+  var a=new Array();
+  if (localStorage.k == undefined) {localStorage.k = "-1"}
+    if (localStorage.hcl == undefined){localStorage.hcl = "[]"}
+      a = JSON.parse(localStorage.hcl);
 
-function refresh(){
-  localStorage.k = -1;
-  localStorage.hcl = "[]";
-  a = JSON.parse(localStorage.hcl);
-  drawBasic();
-}
+    function refresh(){
+      localStorage.k = -1;
+      localStorage.hcl = "[]";
+      a = JSON.parse(localStorage.hcl);
+      drawBasic();
+    }
 
-function add(){
-  var m = document.getElementById("ad").value;
-  localStorage.k = String(Number(localStorage.k) + 1);
-  a[Number(localStorage.k)] = [Number(localStorage.k)+1,Number(m)];
-  localStorage.hcl = JSON.stringify(a);
-  drawBasic();
-}
+    function add(){
+      var m = document.getElementById("ad").value;
+      localStorage.k = String(Number(localStorage.k) + 1);
+      a[Number(localStorage.k)] = [Number(localStorage.k)+1,Number(m)];
+      localStorage.hcl = JSON.stringify(a);
+      drawBasic();
+    }
 
-function drawBasic() {
+    function drawBasic() {
       var data = new google.visualization.DataTable();
       data.addColumn('number', 'X')
       data.addColumn('number', 'Scores');
@@ -81,5 +86,5 @@ function drawBasic() {
 
       chart.draw(data, options);
     }
-</script>
-</html>
+  </script>
+  </html>
