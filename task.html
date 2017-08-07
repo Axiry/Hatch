@@ -28,7 +28,7 @@
   <a href="index.html">Home</a>
   <a href="task.html">View tasks</a>
   <a href="test.html">Test analysis</a>
-  <img src="favicon.ico" onclick="hatchPage()" />
+  <img id="egg" src="egg.png" onclick="hatchPage()" />
 </div>
 <div class="topNavBar">
   <span class="toggle-sidenav" onclick="openNav()">
@@ -66,10 +66,15 @@
 
 <div id="hatch" style="top: 3%;left: 5%;z-index: 10000;background-color: white;position:absolute; width: 95%;height: 97%;display: none;">
   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="pageHide()">Back</button>
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="hatchEgg()">Hatch</button>
   <p id="hatchProgress">0</p>
+  <img src="chicken.png" />
   <p id="normal"></p>
+  <img src="lark.png" />
   <p id="rare"></p>
+  <img src="bushtit.png" />
   <p id="superRare"></p>
+  <img src="dragon.png" />
   <p id="superiorSuperRare"></p>
   <p id="luck"></p>
 </div>
