@@ -29,6 +29,8 @@
   <a href="task.html">View tasks</a>
   <a href="test.html">Test analysis</a>
   <img id="egg" src="egg.png" onclick="hatchPage()" />
+  <br><br><br><br><br><br><br><br><br><br><br><br>
+  <img id="setting" src="setting.png" onclick="settingPage()" style="width:50%" />
 </div>
 <div class="topNavBar">
   <span class="toggle-sidenav" onclick="openNav()">
@@ -67,6 +69,7 @@
 <div id="hatch" style="top: 3%;left: 5%;z-index: 10000;background-color: white;position:absolute; width: 95%;height: 97%;display: none;">
   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="pageHide()">Back</button>
   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="hatchEgg()">Hatch</button>
+  <br><br><img id="egg2" src="egg2.png" />
   <p id="hatchProgress">0</p>
   <img src="chicken.png" />
   <p id="normal"></p>
@@ -77,6 +80,16 @@
   <img src="dragon.png" />
   <p id="superiorSuperRare"></p>
   <p id="luck"></p>
+</div>
+
+<div id="setting1" style="top: 3%;left: 5%;z-index: 10000;background-color: white;position:absolute; width: 95%;height: 97%;display: none;">
+   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="settingHide()">Back</button>
+   <p class="taskName">Set ratio of hatch-progress gained to the difficulty</p>
+   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+   <input type="text" name="name" id="setRatio" class="mdl-textfield__input">
+   <label class="mdl-textfield__label">Title</label>
+ </div>
+   <button onclick="set()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Set</button>
 </div>
 
 <div id="invisDesc">

@@ -9,14 +9,16 @@ function init(){
     if (localStorage.rare==undefined){localStorage.rare = "0";}
     if (localStorage.superRare==undefined){localStorage.superRare = "0";}
     if (localStorage.superiorSuperRare==undefined){localStorage.superiorSuperRare = "0";}
+    if (localStorage.ratio==undefined){localStorage.ratio = "5";}
     datatable = document.getElementById("datatable");
-    document.getElementById("hatchProgress").innerHTML = localStorage.hatch;
+    document.getElementById("hatchProgress").innerHTML = "Progress: "+localStorage.hatch+"%";
     document.getElementById("normal").innerHTML = localStorage.normal;
     document.getElementById("rare").innerHTML = localStorage.rare;
     document.getElementById("superRare").innerHTML = localStorage.superRare;
     document.getElementById("superiorSuperRare").innerHTML = localStorage.superiorSuperRare;
     document.getElementById("luck").innerHTML = "Bonus luck: "+localStorage.luck+"0%";
-    if (localStorage.hatch<100){document.getElementById("egg").src = "egg.png";} else {document.getElementById("egg").src = "hatchedEgg.png";}
+    if (Number(localStorage.hatch)<100){document.getElementById("egg").src = "egg.png";} else {document.getElementById("egg").src = "hatchedEgg.png";}
+    if (Number(localStorage.hatch)<100){document.getElementById("egg2").src = "egg2.png";} else {document.getElementById("egg2").src = "hatchedEgg2.png";}
     //showAllData();
 }
 
@@ -144,8 +146,10 @@ function showDetail(row){
         document.getElementById("finished").onclick = function(){deleteData(row.Name);
         document.getElementById("invisDesc").style.display = "none";
         document.getElementById("k").style.display = "inline";
-        localStorage.hatch = String(Number(localStorage.hatch) + row.Difficulty * 5);
-        document.getElementById("hatchProgress").innerHTML = localStorage.hatch; 
+        localStorage.hatch = String(Number(localStorage.hatch) + row.Difficulty * localStorage.ratio);
+        document.getElementById("hatchProgress").innerHTML = "Progress: "+localStorage.hatch+"%"; 
+        if (Number(localStorage.hatch)<100){document.getElementById("egg").src = "egg.png";} else {document.getElementById("egg").src = "hatchedEgg.png";}
+        if (Number(localStorage.hatch)<100){document.getElementById("egg2").src = "egg2.png";} else {document.getElementById("egg2").src = "hatchedEgg2.png";}
     }
     document.getElementById("edit").onclick = function(){edit(row);}
 }
@@ -168,9 +172,10 @@ function hatchEgg(){
             if (result>0.97*(1-Number(localStorage.luck)*0.015)){
                 superiorSuperRare();
             }
-            document.getElementById("hatchProgress").innerHTML = localStorage.hatch; 
+            document.getElementById("hatchProgress").innerHTML = "Progress: "+localStorage.hatch+"%"; 
         }
         if (localStorage.hatch<100){document.getElementById("egg").src = "egg.png";} else {document.getElementById("egg").src = "hatchedEgg.png";}
+        if (Number(localStorage.hatch)<100){document.getElementById("egg2").src = "egg2.png";} else {document.getElementById("egg2").src = "hatchedEgg2.png";}
 }
 
 function normal(){
@@ -182,22 +187,25 @@ function normal(){
 function rare(){
     localStorage.rare = String(Number(localStorage.rare)+1);
     document.getElementById("rare").innerHTML = localStorage.rare;
-    localStorage.luck = "0";
+    localStorage.luck = "1";
     window.alert("Your luck is not bad. A lark has been added to your collection!");
+    document.getElementById("luck").innerHTML = "Bonus luck: "+localStorage.luck+"0%";
 }
 
 function superRare(){
     localStorage.superRare = String(Number(localStorage.superRare)+1);
     document.getElementById("superRare").innerHTML = localStorage.superRare;
-    localStorage.luck = "0";
+    localStorage.luck = "1";
     window.alert("Good luck! A silver-throated bushtit has been added to your collection!");
+    document.getElementById("luck").innerHTML = "Bonus luck: "+localStorage.luck+"0%";
 }
 
 function superiorSuperRare(){
     localStorage.superiorSuperRare = String(Number(localStorage.superiorSuperRare)+1);
     document.getElementById("superiorSuperRare").innerHTML = localStorage.superiorSuperRare;
-    localStorage.luck = "0";
+    localStorage.luck = "1";
     window.alert("Unbelievable! A dragon has been added to your collection!");
+    document.getElementById("luck").innerHTML = "Bonus luck: "+localStorage.luck+"0%";
 }
 
 function order(){
@@ -278,13 +286,27 @@ function finish(){
 }
 
 function hatchPage(){
-    document.getElementById("hatch").style.display = "inline"
+    document.getElementById("hatch").style.display = "inline";
     document.getElementById("k").style.display = "none";
 }
 
 function pageHide(){
-    document.getElementById("hatch").style.display = "none"
+    document.getElementById("hatch").style.display = "none";
     document.getElementById("k").style.display = "inline";
+}
+
+function settingPage(){
+    document.getElementById("setting1").style.display = "inline";
+    document.getElementById("k").style.display = "none";
+}
+
+function settingHide(){
+    document.getElementById("setting1").style.display = "none";
+    document.getElementById("k").style.display = "inline";
+}
+
+function set(){
+    localStorage.ratio = document.getElementById("setRatio").value;
 }
 
 function edit(row){
