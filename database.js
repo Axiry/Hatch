@@ -19,7 +19,8 @@ function init(){
     document.getElementById("luck").innerHTML = "Bonus luck: "+localStorage.luck+"0%";
     if (Number(localStorage.hatch)<100){document.getElementById("egg").src = "egg.png";} else {document.getElementById("egg").src = "hatchedEgg.png";}
     if (Number(localStorage.hatch)<100){document.getElementById("egg2").src = "egg2.png";} else {document.getElementById("egg2").src = "hatchedEgg2.png";}
-    //showAllData();
+    if (Number(localStorage.hatch)<100){document.getElementById("p1").style.width=Number(localStorage.hatch)+"%"}
+    if (Number(localStorage.hatch)>=100){document.getElementById("p1").style.width="100%"}
 }
 
 function hideAllData(){
@@ -150,6 +151,8 @@ function showDetail(row){
         document.getElementById("hatchProgress").innerHTML = "Progress: "+localStorage.hatch+"%"; 
         if (Number(localStorage.hatch)<100){document.getElementById("egg").src = "egg.png";} else {document.getElementById("egg").src = "hatchedEgg.png";}
         if (Number(localStorage.hatch)<100){document.getElementById("egg2").src = "egg2.png";} else {document.getElementById("egg2").src = "hatchedEgg2.png";}
+    if (Number(localStorage.hatch)<100){document.getElementById("p1").style.width=Number(localStorage.hatch)+"%"}
+    if (Number(localStorage.hatch)>=100){document.getElementById("p1").style.width="100%"}
     }
     document.getElementById("edit").onclick = function(){edit(row);}
 }
@@ -176,6 +179,8 @@ function hatchEgg(){
         }
         if (localStorage.hatch<100){document.getElementById("egg").src = "egg.png";} else {document.getElementById("egg").src = "hatchedEgg.png";}
         if (Number(localStorage.hatch)<100){document.getElementById("egg2").src = "egg2.png";} else {document.getElementById("egg2").src = "hatchedEgg2.png";}
+    if (Number(localStorage.hatch)<100){document.getElementById("p1").style.width=Number(localStorage.hatch)+"%"}
+    if (Number(localStorage.hatch)>=100){document.getElementById("p1").style.width="100%"}
 }
 
 function normal(){
@@ -288,6 +293,7 @@ function finish(){
 function hatchPage(){
     document.getElementById("hatch").style.display = "inline";
     document.getElementById("k").style.display = "none";
+
 }
 
 function pageHide(){
@@ -306,7 +312,11 @@ function settingHide(){
 }
 
 function set(){
-    localStorage.ratio = document.getElementById("setRatio").value;
+    if(Number(document.getElementById("setRatio").value)<=10 & Number(document.getElementById("setRatio").value)<=10>=1) {
+        localStorage.ratio = document.getElementById("setRatio").value;
+    }else{
+        window.alert("Please key in a number between 1 and 10.");
+    }
 }
 
 function edit(row){
