@@ -4,7 +4,6 @@ var db = openDatabase("MyData","","My Database",1024*100);
 
 function init(){
     if (localStorage.hatch==undefined){localStorage.hatch = "0";}
-    localStorage.hatch = "0";
     if (localStorage.luck==undefined){localStorage.luck = "1";}
     if (localStorage.normal==undefined){localStorage.normal = "0";}
     if (localStorage.rare==undefined){localStorage.rare = "0";}
