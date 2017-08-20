@@ -186,30 +186,42 @@ function hatchEgg(){
 function normal(){
     localStorage.normal = String(Number(localStorage.normal)+1);
     document.getElementById("normal").innerHTML = localStorage.normal;
-    window.alert("A chicken has been added to your collection! You have gained some luck for the next hatch!");
+    document.getElementById("movie").classList.remove('stop');
+    document.getElementById("movie").style.display = "inline";
+    document.getElementById("hatch").style.display = "none";
+    var t=setTimeout("document.getElementById('movie').style.display = 'none';document.getElementById('n').style.display = 'inline';document.getElementById('movie').classList.add('stop')",3200);
 }
 
 function rare(){
     localStorage.rare = String(Number(localStorage.rare)+1);
     document.getElementById("rare").innerHTML = localStorage.rare;
+    document.getElementById("movie").classList.remove('stop');
+    document.getElementById("movie").style.display = "inline";
+    document.getElementById("hatch").style.display = "none";
     localStorage.luck = "1";
-    window.alert("Your luck is not bad. A lark has been added to your collection!");
+    var t=setTimeout("document.getElementById('movie').style.display = 'none';document.getElementById('r').style.display = 'inline';document.getElementById('movie').classList.add('stop')",3200);
     document.getElementById("luck").innerHTML = "Bonus luck: "+localStorage.luck+"0%";
 }
 
 function superRare(){
     localStorage.superRare = String(Number(localStorage.superRare)+1);
     document.getElementById("superRare").innerHTML = localStorage.superRare;
+    document.getElementById("movie").classList.remove('stop');
+    document.getElementById("movie").style.display = "inline";
+    document.getElementById("hatch").style.display = "none";
     localStorage.luck = "1";
-    window.alert("Good luck! A silver-throated bushtit has been added to your collection!");
+    var t=setTimeout("document.getElementById('movie').style.display = 'none';document.getElementById('sr').style.display = 'inline';document.getElementById('movie').classList.add('stop')",3200);
     document.getElementById("luck").innerHTML = "Bonus luck: "+localStorage.luck+"0%";
 }
 
 function superiorSuperRare(){
     localStorage.superiorSuperRare = String(Number(localStorage.superiorSuperRare)+1);
     document.getElementById("superiorSuperRare").innerHTML = localStorage.superiorSuperRare;
+    document.getElementById("movie").classList.remove('stop');
+    document.getElementById("movie").style.display = "inline";
+    document.getElementById("hatch").style.display = "none";
     localStorage.luck = "1";
-    window.alert("Unbelievable! A dragon has been added to your collection!");
+    var t=setTimeout("document.getElementById('movie').style.display = 'none';document.getElementById('ssr').style.display = 'inline';document.getElementById('movie').classList.add('stop')",3200);
     document.getElementById("luck").innerHTML = "Bonus luck: "+localStorage.luck+"0%";
 }
 
@@ -312,11 +324,31 @@ function settingHide(){
 }
 
 function set(){
-    if(Number(document.getElementById("setRatio").value)<=10 & Number(document.getElementById("setRatio").value)<=10>=1) {
+    if(Number(document.getElementById("setRatio").value)<=100 & Number(document.getElementById("setRatio").value)>=1) {
         localStorage.ratio = document.getElementById("setRatio").value;
     }else{
         window.alert("Please key in a number between 1 and 10.");
     }
+}
+
+function endn(){
+    document.getElementById("n").style.display = "none";
+    document.getElementById("hatch").style.display = "inline";
+}
+
+function endr(){
+    document.getElementById("r").style.display = "none";
+    document.getElementById("hatch").style.display = "inline";
+}
+
+function endsr(){
+    document.getElementById("sr").style.display = "none";
+    document.getElementById("hatch").style.display = "inline";
+}
+
+function endssr(){
+    document.getElementById("ssr").style.display = "none";
+    document.getElementById("hatch").style.display = "inline";
 }
 
 function edit(row){
@@ -347,3 +379,6 @@ function edit(row){
     } else {window.alert("The selected value for Difficulty and Importance should on a scale of 0-10.");}
     }
 }
+
+
+
