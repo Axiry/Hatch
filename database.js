@@ -299,7 +299,7 @@ function back(){
 function finish(){
     document.getElementById("invisAddTask").style.display = "none";
     saveData();
-    document.getElementById("k").style.display = "inline";
+    if (Importance<0 || Importance>10 || Difficulty<0 || Difficulty>10){document.getElementById("k").style.display = "inline";}
 }
 
 function hatchPage(){
@@ -380,5 +380,11 @@ function edit(row){
     }
 }
 
-
-
+function able(){
+    if (!document.getElementById("switch-3").checked){
+        document.getElementById("egg").style.display = "none";
+    }
+    if (document.getElementById("switch-3").checked){
+        document.getElementById("egg").style.display = "inline";
+    }
+}
